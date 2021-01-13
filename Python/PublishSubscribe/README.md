@@ -31,7 +31,7 @@ Exchange does 1 of 3 things
 4. Topic
 
 Fanout will broadcast all messages it receives to **all** the queues it knows
-![alt text](/Users/jbollman/dev/rabbitmq-tutorial/rabbitmq-training/Python/PublishSubscribe/PSO.png)
+![alt text](https://github.com/jbollman7/rabbitmq-training/blob/master/Python/PublishSubscribe/PS0.png)
 Creating an exchange called logs
 `
 channge.exchange_declare(exchange='logs', exchange_type='fanout')
@@ -52,6 +52,11 @@ result = channel.queue_declare(queue'=', exclusive=True)
 We've already created a fanout exchange and a queue. Now we need to tell the exchange to send messages to our queue
 The relationship between exchange and a queue is called a binding
 
+
+#### Putting it all together
+The most important chagne is that we publish messages to our logs exchange instead of the nameless one. We are required to supply a routing_key when sending
+but its value is ignored for fanout exchanges
+![alt-text](https://github.com/jbollman7/rabbitmq-training/blob/master/Python/PublishSubscribe/PS5.png)
 `
 channel.queue_bind(exchange='logs', queue=result.method.queue)
 `
